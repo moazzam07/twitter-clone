@@ -10,7 +10,14 @@ block content
         - followersCount = profileUser.followers.length
         - followingCount = profileUser.following.length
         .profileHeaderContainer 
-            .coverPhotoContainer    
+            .coverPhotoSection
+                .coverPhotoContainer
+                    if profileUser.coverPhoto
+                        img(src=profileUser.coverPhoto, alt="User's cover photo")
+
+                    if profileUser._id == userLoggedIn._id  
+                        button.coverPhotoButton(data-toggle="modal", data-target="#coverPhotoUploadModal")
+                            i.fas.fa-camera   
                 .userImageContainer     
                     img(src=profileUser.profilePic, alt="User's Profile Pic")
 
@@ -44,9 +51,11 @@ block content
             +createTab("posts", `/profile/${profileUser.username}`, selectedTab != "replies")
             +createTab("replies", `/profile/${profileUser.username}/replies`, selectedTab == "replies")
         
+        .pinnedPostContainer 
         .postsContainer      
         +createPostModals(userLoggedIn)
         +createImageUploadModal()
+        +createcoverPhotoUploadModal()
 
 block scripts
     script(src="/js/profile.js")
