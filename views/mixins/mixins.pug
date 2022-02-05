@@ -44,7 +44,7 @@ mixin createPostModals(userLoggedIn)
     +createReplyModal(userLoggedIn)
     +createDeletePostModal()
     +createPinnedPostModal()
-    +createUnpinnedPostModal()
+    +createUnpinPostModal()
 
 mixin createFollowButton(user, isFollowing)
     - text = isFollowing ? "Following" : "Follow"
@@ -52,8 +52,8 @@ mixin createFollowButton(user, isFollowing)
     button(class=buttonClass, data-user=user._id) #{text}
 
 mixin createTab(name, href, isSelected)
-    - className = isSelected ? "tab Active" : "tab"
-    a(href=href, class=className) 
+    - className = isSelected ? "tab active" : "tab"
+    a(href=href, class=className)
         span #{name}
 
 mixin createImageUploadModal()
@@ -67,24 +67,24 @@ mixin createImageUploadModal()
                 .modal-body
                     input#filePhoto(type="file", name="filePhoto")
 
-                    .imagePreviewContainer 
+                    .imagePreviewContainer
                         img#imagePreview
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
                     button#imageUploadButton.btn.btn-primary(type='button') Save
 
-mixin createcoverPhotoUploadModal()
+mixin createCoverPhotoUploadModal()
     #coverPhotoUploadModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='coverPhotoModalLabel', aria-hidden='true')
         .modal-dialog(role='document')
             .modal-content
                 .modal-header
-                    h5#coverPhotoModalLabel.modal-title Upload a new Cover photo
+                    h5#coverPhotoModalLabel.modal-title Upload a new cover photo
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') &times;
                 .modal-body
                     input#coverPhoto(type="file", name="filePhoto")
 
-                    .imagePreviewContainer 
+                    .imagePreviewContainer
                         img#coverPreview
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
@@ -95,25 +95,25 @@ mixin createPinnedPostModal()
         .modal-dialog(role='document')
             .modal-content
                 .modal-header
-                    h5#confirmPinModalLabel.modal-title Pin this Post?
+                    h5#confirmPinModalLabel.modal-title Pin this post?
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') &times;
                 .modal-body
-                    p This post will appear at the top of your profile. You can only pin one post
+                    p This post will appear at the top of your profile. You can only pin one post.
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
-                    button#pinPostButton.btn.btn-primary(type='button') Pin                    
+                    button#pinPostButton.btn.btn-primary(type='button') Pin
 
-mixin createUnpinnedPostModal()
+mixin createUnpinPostModal()
     #unpinModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='unpinModalLabel', aria-hidden='true')
         .modal-dialog(role='document')
             .modal-content
                 .modal-header
-                    h5#unpinModalLabel.modal-title Unpin this Post?
+                    h5#unpinModalLabel.modal-title Unpin the post?
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') &times;
                 .modal-body
-                    p This post will be Unpin
+                    p This post will be unpinned.
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
-                    button#unpinPostButton.btn.btn-primary(type='button') Unpin                    
+                    button#unpinPostButton.btn.btn-primary(type='button') Pin
